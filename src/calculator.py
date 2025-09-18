@@ -46,7 +46,11 @@ def subtract(a, b):
 
 def divide(a, b):
     # TODO: Implement the division function here
-    pass
+    validate_numbers(a, b)
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    result = a / b
+    return format_result(result)
 
 
 def main():
@@ -79,6 +83,11 @@ def main():
                 result = subtract(a, b)
                 print(f"Result: {a} - {b} = {result}")
             # TODO: Add handling for divide operation here
+            elif operation == "divide":
+                result = divide(a, b)
+                print(f"Result: {a} / {b} = {result}")
+            else:
+                print("Invalid operation. Please choose add, subtract, or divide.")
         except ValueError:
             print("Please enter valid numbers")
         except TypeError as e:
