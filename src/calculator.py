@@ -53,6 +53,25 @@ def divide(a, b):
     return format_result(result)
 
 
+def multiply(a, b):
+    """
+    Multiply two numbers together.
+
+    Args:
+        a (float): First number
+        b (float): Second number
+
+    Returns:
+        float: Product of a and b
+
+    Raises:
+        TypeError: If inputs are not numbers
+    """
+    validate_numbers(a, b)
+    result = a * b
+    return format_result(result)
+
+
 def main():
     """
     Simple interactive calculator for testing.
@@ -67,9 +86,8 @@ def main():
         if operation == "quit":
             print("Goodbye!")
             break
-        # TODO: Add handling for divide operation here
-        if operation not in ["add", "subtract"]:
-            print("Invalid operation. Please use 'add' or 'subtract'")
+        if operation not in ["add", "subtract", "multiply"]:
+            print("Invalid operation. Please use 'add', 'subtract' or 'multiply'")
             continue
 
         try:
@@ -82,7 +100,11 @@ def main():
             elif operation == "subtract":
                 result = subtract(a, b)
                 print(f"Result: {a} - {b} = {result}")
-            # TODO: Add handling for divide operation here
+            elif operation == "multiply":
+                result = multiply(a, b)
+                print(
+                    f"Result: {a} * {b} = {result}"
+                )  # TODO: Add handling for divide operation here
             elif operation == "divide":
                 result = divide(a, b)
                 print(f"Result: {a} / {b} = {result}")
